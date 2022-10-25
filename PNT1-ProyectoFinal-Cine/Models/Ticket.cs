@@ -8,6 +8,10 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-
+        public int Id { get; set; }
+        public int asiento { get; set; }
+        public Pelicula pelicula { get; set; }
+        public Usuario usuario { get; set; }
+        public Sala sala { get; set; }
     }
 }

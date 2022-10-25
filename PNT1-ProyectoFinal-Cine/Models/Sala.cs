@@ -7,5 +7,9 @@ namespace PNT1_ProyectoFinal_Cine.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+        public int Id { get; set; }
+        public int cantAsientos { get; set; }
+        public Pelicula peliculaAsignada { get; set; }
     }
 }
