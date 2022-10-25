@@ -8,6 +8,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
+        public int Id { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasenia{ get; set; }
         public string Nombre { get; set; }
