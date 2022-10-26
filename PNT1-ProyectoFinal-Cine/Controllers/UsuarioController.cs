@@ -26,7 +26,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         }
 
         // GET: Usuario/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.NombreUsuario == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NombreUsuario,Contrasenia,Nombre,Mail")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,NombreUsuario,Contrasenia,Nombre,Mail")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -86,9 +86,9 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("NombreUsuario,Contrasenia,Nombre,Mail")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreUsuario,Contrasenia,Nombre,Mail")] Usuario usuario)
         {
-            if (id != usuario.NombreUsuario)
+            if (id != usuario.Id)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.NombreUsuario))
+                    if (!UsuarioExists(usuario.Id))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -125,7 +125,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.NombreUsuario == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -137,7 +137,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // POST: Usuario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             _context.Usuarios.Remove(usuario);
@@ -145,9 +145,9 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(string id)
+        private bool UsuarioExists(int id)
         {
-            return _context.Usuarios.Any(e => e.NombreUsuario == id);
+            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }
