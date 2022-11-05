@@ -102,7 +102,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PeliculaExists(pelicula.Id))
+                    if (!PeliculaExists(pelicula.PeliculaId))
                     {
                         return NotFound();
                     }

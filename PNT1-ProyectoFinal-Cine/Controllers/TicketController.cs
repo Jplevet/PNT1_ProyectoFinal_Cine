@@ -54,7 +54,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,asiento")] Ticket ticket)
+        public async Task<IActionResult> Create([Bind("Id,asiento,fecha")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,asiento")] Ticket ticket)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,asiento,fecha")] Ticket ticket)
         {
             if (id != ticket.Id)
             {

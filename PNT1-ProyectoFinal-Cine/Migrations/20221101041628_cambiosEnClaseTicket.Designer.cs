@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PNT1_ProyectoFinal_Cine.Context;
 
 namespace PNT1_ProyectoFinal_Cine.Migrations
 {
     [DbContext(typeof(CineDatabaseContext))]
-    partial class CineDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221101041628_cambiosEnClaseTicket")]
+    partial class cambiosEnClaseTicket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,17 +23,10 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Pelicula", b =>
                 {
-                    b.Property<int>("PeliculaId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Id")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PeliculaId1")
-                        .HasColumnType("int");
 
                     b.Property<int?>("TicketId")
                         .HasColumnType("int");
@@ -39,9 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                     b.Property<string>("titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PeliculaId");
-
-                    b.HasIndex("PeliculaId1");
+                    b.HasKey("Id");
 
                     b.HasIndex("TicketId");
 
@@ -58,12 +51,12 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                     b.Property<int>("cantAsientos")
                         .HasColumnType("int");
 
-                    b.Property<int?>("peliculaAsignadaPeliculaId")
+                    b.Property<int?>("peliculaAsignadaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("peliculaAsignadaPeliculaId");
+                    b.HasIndex("peliculaAsignadaId");
 
                     b.ToTable("Salas");
                 });
@@ -75,14 +68,14 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("PeliculaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("asiento")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("fecha")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("peliculaId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("salaId")
                         .HasColumnType("int");
@@ -92,7 +85,7 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PeliculaId");
+                    b.HasIndex("peliculaId");
 
                     b.HasIndex("salaId");
 
@@ -131,10 +124,6 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Pelicula", b =>
                 {
-                    b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "pelicula")
-                        .WithMany()
-                        .HasForeignKey("PeliculaId1");
-
                     b.HasOne("PNT1_ProyectoFinal_Cine.Models.Ticket", null)
                         .WithMany("Peliculas")
                         .HasForeignKey("TicketId");
@@ -144,14 +133,14 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                 {
                     b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "peliculaAsignada")
                         .WithMany()
-                        .HasForeignKey("peliculaAsignadaPeliculaId");
+                        .HasForeignKey("peliculaAsignadaId");
                 });
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Ticket", b =>
                 {
                     b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "pelicula")
                         .WithMany()
-                        .HasForeignKey("PeliculaId");
+                        .HasForeignKey("peliculaId");
 
                     b.HasOne("PNT1_ProyectoFinal_Cine.Models.Sala", "sala")
                         .WithMany()

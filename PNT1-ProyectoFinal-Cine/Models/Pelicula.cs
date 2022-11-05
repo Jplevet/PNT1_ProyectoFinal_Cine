@@ -8,8 +8,14 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int Id { get; set; }
+        public int PeliculaId { get; set; }
         public string titulo { get; set; }
+
+
+        [Required(ErrorMessage = "Please select a bakery")]
+        public int? Id { get; set; }
+
+        public virtual Pelicula pelicula { get; set; }
 
     }
 }
