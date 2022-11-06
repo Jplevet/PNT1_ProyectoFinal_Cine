@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\PNT1-ProyectoFinal-Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {}
+    "C:\\Users\\User\\Desktop\\ort\\programacion nuevas tecnologias\\ejercicios\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\PNT1-ProyectoFinal-Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {
+    "C:\\Users\\User\\Desktop\\ort\\programacion nuevas tecnologias\\ejercicios\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\PNT1-ProyectoFinal-Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\ort\\programacion nuevas tecnologias\\ejercicios\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
         "projectName": "PNT1_ProyectoFinal_Cine",
-        "projectPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\PNT1-ProyectoFinal-Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
-        "packagesPath": "C:\\Users\\Juan\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\PNT1-ProyectoFinal-Cine\\PNT1-ProyectoFinal-Cine\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\ort\\programacion nuevas tecnologias\\ejercicios\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\ort\\programacion nuevas tecnologias\\ejercicios\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Juan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
