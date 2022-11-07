@@ -174,7 +174,7 @@ body {
 .toggle {
     width: 40px;
     height: 20px;
-    background-color: black;
+    background-color: white;
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -188,8 +188,8 @@ body {
 
 .toggle-ball {
     width: 18px;
-    height: 18px;
-    background-color: white;
+    height: 18px; 
+    background-color: black;
     position: absolute;
     right: 1px;
     border-radius: 50%;
@@ -335,11 +335,11 @@ body {
 }
 
 .toggle.active {
-    background-color: white;
+    background-color: black;
 }
 
 .toggle-ball.active {
-    background-color: black;
+    background-color: white;
     transform: translateX(-20px);
 }
 
