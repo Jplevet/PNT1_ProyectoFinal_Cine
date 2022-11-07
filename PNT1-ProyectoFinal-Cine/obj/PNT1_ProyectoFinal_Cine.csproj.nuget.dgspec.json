@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {}
+    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo v2\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {
+    "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo v2\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
+        "projectUniqueName": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo v2\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
         "projectName": "PNT1_ProyectoFinal_Cine",
-        "projectPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
+        "projectPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo v2\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\PNT1_ProyectoFinal_Cine.csproj",
         "packagesPath": "C:\\Users\\Juan\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\obj\\",
+        "outputPath": "D:\\Documents\\ORT\\1er año\\2do Cuatrimestre\\PNT1\\Proyecto final\\Actual\\Ultimo v2\\PNT1_ProyectoFinal_Cine\\PNT1-ProyectoFinal-Cine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Juan\\AppData\\Roaming\\NuGet\\NuGet.Config",
