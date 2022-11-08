@@ -31,7 +31,8 @@ namespace PNT1_ProyectoFinal_Cine.Models
         public int? UsuarioId { get; set; }
         public virtual Usuario usuario { get; set; }
 
-
+       
+        [EnumDataType(typeof(Sala))]
         public Sala sala { get; set; }
 
         //public int? BakeryId { get; set; }
