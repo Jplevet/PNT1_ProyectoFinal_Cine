@@ -34,7 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var ticket = await _context.Tickets
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,asiento,fecha")] Ticket ticket)
         {
-            if (id != ticket.Id)
+            if (id != ticket.TicketId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TicketExists(ticket.Id))
+                    if (!TicketExists(ticket.TicketId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var ticket = await _context.Tickets
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
                 return NotFound();
@@ -145,9 +145,16 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        private void PopulatePeliculasDropDownList()
+        {
+            var pelis = _context.Peliculas; 
+            ViewBag.PeliculaID = new SelectList(pelis.AsNoTracking(), "PeliculaId", "titulo");
+        }
+
+
         private bool TicketExists(int id)
         {
-            return _context.Tickets.Any(e => e.Id == id);
+            return _context.Tickets.Any(e => e.TicketId == id);
         }
     }
 }

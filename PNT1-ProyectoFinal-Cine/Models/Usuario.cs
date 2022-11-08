@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PNT1_ProyectoFinal_Cine.Models
@@ -8,7 +9,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int Id { get; set; }
+        public int UsuarioId { get; set; }
 
         [DataType(DataType.Text)]
         [Display(Name = "Nombre Usuario")]
@@ -32,5 +33,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Required(ErrorMessage = "Ingresar mail válido")]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Ingresar email válido")]
         public string Mail { get; set; }
+
+        public virtual ICollection<Ticket> Reservas { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var pelicula = await _context.Peliculas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PeliculaId == id);
             if (pelicula == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,titulo")] Pelicula pelicula)
         {
-            if (id != pelicula.Id)
+            if (id != pelicula.PeliculaId)
             {
                 return NotFound();
             }
@@ -125,7 +125,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var pelicula = await _context.Peliculas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PeliculaId == id);
             if (pelicula == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
 
         private bool PeliculaExists(int id)
         {
-            return _context.Peliculas.Any(e => e.Id == id);
+            return _context.Peliculas.Any(e => e.PeliculaId == id);
         }
     }
 }

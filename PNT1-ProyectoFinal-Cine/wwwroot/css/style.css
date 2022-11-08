@@ -116,6 +116,7 @@ body {
     background-color: black;
     position: sticky;
     top: 0;
+    z-index: 999;
 }
 
 .navbar-container {
@@ -124,7 +125,7 @@ body {
     padding: 0 50px;
     height: 100%;
     color: white;
-    font-family: "Sen", sans-serif;
+    font-family: "Sen", sans-serif;    
 }
 
 .logo-container {
@@ -347,4 +348,10 @@ body {
     .menu-container {
         display: none;
     }
+}
+
+.footer-style{
+    padding-left: 20px;
+    background-color:black;
+    color:white;
 }

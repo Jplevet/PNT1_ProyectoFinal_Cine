@@ -20,10 +20,9 @@
             </div>
             <div class="menu-container">
                 <ul class="menu-list">
-                    <a class="menu-list-item active" asp-area="" asp-controller="Shared"
-                       asp-action="_Layout">Reserva</a>
                     <a class="menu-list-item active" asp-area="" asp-controller="Ticket" asp-action="Index">Reserva</a>
                     <a class="menu-list-item active" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
+                    <a class="menu-list-item active" asp-area="" asp-controller="Pelicula" asp-action="Index">Películas</a>
                 </ul>
             </div>
             <div class="profile-container">
@@ -266,17 +265,14 @@
                     </div>
                 </div>
                 <i class="fas fa-chevron-right arrow"></i>
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
             </div>
         </div>
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted footer-style">
+        <div>
             &copy; 2022 - PNT1_ProyectoFinal_Cine - <a asp-area="" asp-controller="Home"
                                                        asp-action="Privacy">Privacy</a>
         </div>

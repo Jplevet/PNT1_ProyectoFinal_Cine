@@ -34,7 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UsuarioId == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,NombreUsuario,Contrasenia,Nombre,Mail")] Usuario usuario)
         {
-            if (id != usuario.Id)
+            if (id != usuario.UsuarioId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!UsuarioExists(usuario.UsuarioId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UsuarioId == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
 
         private bool UsuarioExists(int id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Usuarios.Any(e => e.UsuarioId == id);
         }
     }
 }

@@ -9,13 +9,10 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int PeliculaId { get; set; }
+
+
+        [Required(ErrorMessage = "Seleccionar Película correcta")]
         public string titulo { get; set; }
-
-
-        [Required(ErrorMessage = "Please select a bakery")]
-        public int? Id { get; set; }
-
-        public virtual Pelicula pelicula { get; set; }
 
     }
 }

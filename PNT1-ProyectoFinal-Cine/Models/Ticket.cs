@@ -10,7 +10,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int Id { get; set; }
+        public int TicketId { get; set; }
 
 
         [Range(1, 40)]
@@ -24,14 +24,18 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Required(ErrorMessage = "Ingresar película válida")]
 
 
-        public virtual ICollection<Pelicula> Peliculas { get; set; }
+        public int? PeliculaId { get; set; }
+        public virtual Pelicula Pelicula { get; set; }
 
-        public Pelicula pelicula { get; set; }
 
-
-        public Usuario usuario { get; set; }
+        public int? UsuarioId { get; set; }
+        public virtual Usuario usuario { get; set; }
 
 
         public Sala sala { get; set; }
+
+        //public int? BakeryId { get; set; }
+        //public virtual Bakery Bakery { get; set; }
+
     }
 }

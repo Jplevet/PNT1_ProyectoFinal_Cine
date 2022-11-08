@@ -10,8 +10,8 @@ using PNT1_ProyectoFinal_Cine.Context;
 namespace PNT1_ProyectoFinal_Cine.Migrations
 {
     [DbContext(typeof(CineDatabaseContext))]
-    [Migration("20221025043428_agregueIdUsuario")]
-    partial class agregueIdUsuario
+    [Migration("20221108014617_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,113 +23,91 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Pelicula", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PeliculaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PeliculaId");
 
                     b.ToTable("Peliculas");
                 });
 
-            modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Sala", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("cantAsientos")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("peliculaAsignadaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("peliculaAsignadaId");
-
-                    b.ToTable("Salas");
-                });
-
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Ticket", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TicketId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("PeliculaId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
 
                     b.Property<int>("asiento")
                         .HasColumnType("int");
 
-                    b.Property<int?>("peliculaId")
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("sala")
                         .HasColumnType("int");
 
-                    b.Property<int?>("salaId")
-                        .HasColumnType("int");
+                    b.HasKey("TicketId");
 
-                    b.Property<int?>("usuarioId")
-                        .HasColumnType("int");
+                    b.HasIndex("PeliculaId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("peliculaId");
-
-                    b.HasIndex("salaId");
-
-                    b.HasIndex("usuarioId");
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Usuario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Contrasenia")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mail")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreUsuario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Sala", b =>
-                {
-                    b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "peliculaAsignada")
-                        .WithMany()
-                        .HasForeignKey("peliculaAsignadaId");
-                });
-
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Ticket", b =>
                 {
-                    b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "pelicula")
+                    b.HasOne("PNT1_ProyectoFinal_Cine.Models.Pelicula", "Pelicula")
                         .WithMany()
-                        .HasForeignKey("peliculaId");
-
-                    b.HasOne("PNT1_ProyectoFinal_Cine.Models.Sala", "sala")
-                        .WithMany()
-                        .HasForeignKey("salaId");
+                        .HasForeignKey("PeliculaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PNT1_ProyectoFinal_Cine.Models.Usuario", "usuario")
-                        .WithMany()
-                        .HasForeignKey("usuarioId");
+                        .WithMany("Reservas")
+                        .HasForeignKey("UsuarioId");
                 });
 #pragma warning restore 612, 618
         }

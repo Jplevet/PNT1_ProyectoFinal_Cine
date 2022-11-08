@@ -13,7 +13,7 @@ namespace PNT1_ProyectoFinal_Cine.Context
         {
         }
         public DbSet<Pelicula> Peliculas { get; set; }
-        public DbSet<Sala> Salas { get; set; }
+        //public DbSet<Sala> Salas { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
     }
