@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PNT1_ProyectoFinal_Cine.Context;
 using PNT1_ProyectoFinal_Cine.Models;
 
+
 namespace PNT1_ProyectoFinal_Cine.Controllers
 {
     public class PeliculaController : Controller
@@ -54,7 +55,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,titulo")] Pelicula pelicula)
+        public async Task<IActionResult> Create([Bind("PeliculaId,titulo")] Pelicula pelicula)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +87,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,titulo")] Pelicula pelicula)
+        public async Task<IActionResult> Edit(int id, [Bind("PeliculaId,titulo")] Pelicula pelicula)
         {
             if (id != pelicula.PeliculaId)
             {
@@ -149,5 +150,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         {
             return _context.Peliculas.Any(e => e.PeliculaId == id);
         }
+
+
     }
 }
