@@ -20,12 +20,15 @@ namespace PNT1_ProyectoFinal_Cine.Models
 
         public DateTime fecha { get; set; }
 
+
+
         [Display(Name = "Película")]
-        [Required(ErrorMessage = "Ingresar película válida")]
-
-
+        [Required(ErrorMessage = "Elegir película")]
         public int? PeliculaId { get; set; }
         public virtual Pelicula Pelicula { get; set; }
+
+        //public int? BakeryId { get; set; }
+        //public virtual Bakery Bakery { get; set; }
 
 
         public int? UsuarioId { get; set; }
@@ -35,8 +38,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [EnumDataType(typeof(Sala))]
         public Sala sala { get; set; }
 
-        //public int? BakeryId { get; set; }
-        //public virtual Bakery Bakery { get; set; }
+
 
     }
 }
