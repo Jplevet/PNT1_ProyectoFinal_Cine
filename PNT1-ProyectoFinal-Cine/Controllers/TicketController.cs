@@ -22,7 +22,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // GET: Ticket
         public async Task<IActionResult> Index()
         {
-            var cineDatabaseContext = _context.Ticket.Include(t => t.Pelicula).Include(t => t.usuario);
+            var cineDatabaseContext = _context.Tickets.Include(t => t.Pelicula).Include(t => t.usuario);
             return View(await cineDatabaseContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .Include(t => t.Pelicula)
                 .Include(t => t.usuario)
                 .FirstOrDefaultAsync(m => m.TicketId == id);
@@ -80,7 +80,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .Include(t => t.Pelicula)
                 .Include(t => t.usuario)
                 .FirstOrDefaultAsync(m => m.TicketId == id);
@@ -152,15 +152,15 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ticket = await _context.Ticket.FindAsync(id);
-            _context.Ticket.Remove(ticket);
+            var ticket = await _context.Tickets.FindAsync(id);
+            _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TicketExists(int id)
         {
-            return _context.Ticket.Any(e => e.TicketId == id);
+            return _context.Tickets.Any(e => e.TicketId == id);
         }
 
         private void PopulatePeliculasDropDownList()

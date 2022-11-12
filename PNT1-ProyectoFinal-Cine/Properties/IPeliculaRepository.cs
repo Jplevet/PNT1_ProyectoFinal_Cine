@@ -1,10 +1,11 @@
-﻿using PNT1_ProyectoFinal_Cine.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.IO;
 using System.Threading.Tasks;
+using PNT1_ProyectoFinal_Cine.Models;
 
-namespace PNT1_ProyectoFinal_Cine.Repositories
+namespace PNT1_ProyectoFinal_Cine.Properties
 {
     public interface IPeliculaRepository
     {

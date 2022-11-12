@@ -23,9 +23,9 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
         }
 
 
-        public Ticket GetPeliculaById(int id)
+        public Pelicula GetPeliculaById(int id)
         {
-            return _context.Tickets.Include(b => b.Pelicula)
+            return _context.Peliculas.Include(b => b.pelicula)
                 .SingleOrDefault(c => c.PeliculaId == id);
         }
 
@@ -70,14 +70,14 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
 
         public void CreatePelicula(Pelicula pelicula)
         {
-            if (pelicula.PhotoAvatar != null && pelicula.PhotoAvatar.Length > 0)
+            if (pelicula.PhotoAvaImg != null && pelicula.PhotoAvaImg.Length > 0)
             {
-                pelicula.ImageMimeType = pelicula.PhotoAvatar.ContentType;
-                pelicula.ImageName = Path.GetFileName(pelicula.PhotoAvatar.FileName);
+                pelicula.ImageMimeType = pelicula.PhotoAvaImg.ContentType;
+                pelicula.ImageName = Path.GetFileName(pelicula.PhotoAvaImg.FileName);
                 using (var memoryStream = new MemoryStream())
                 {
-                    pelicula.PhotoAvatar.CopyTo(memoryStream);
-                    pelicula.PhotoFile = memoryStream.ToArray();
+                    pelicula.PhotoAvaImg.CopyTo(memoryStream);
+                    pelicula.PhotoPelicula = memoryStream.ToArray();
                 }
                 _context.Add(pelicula);
                 _context.SaveChanges();
