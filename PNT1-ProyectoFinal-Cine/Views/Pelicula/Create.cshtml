@@ -1,12 +1,12 @@
 ﻿@model PNT1_ProyectoFinal_Cine.Models.Pelicula
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear película";
 }
 
-<h1>Create</h1>
+<h1>Cargar película</h1>
 
-<h4>Pelicula</h4>
+<h4>Película</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +18,19 @@
                 <span asp-validation-for="titulo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="PhotoAvatar"></label>
+                <input asp-for="PhotoAvatar" type="file" />
+                <span asp-validation-for="PhotoAvatar"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {
