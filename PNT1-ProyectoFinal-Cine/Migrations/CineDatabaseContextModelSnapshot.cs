@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PNT1_ProyectoFinal_Cine.Context;
 
 namespace PNT1_ProyectoFinal_Cine.Migrations
 {
     [DbContext(typeof(CineDatabaseContext))]
-    [Migration("20221108014617_inicial")]
-    partial class inicial
+    partial class CineDatabaseContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,13 +26,52 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("titulo")
+                    b.Property<string>("ImageMimeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PhotoPelicula")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PeliculaId");
 
                     b.ToTable("Peliculas");
+
+                    b.HasData(
+                        new
+                        {
+                            PeliculaId = 1,
+                            ImageMimeType = "image/jpeg",
+                            ImageName = "Drive.jpg",
+                            Titulo = "Drive"
+                        },
+                        new
+                        {
+                            PeliculaId = 2,
+                            ImageMimeType = "image/jpeg",
+                            ImageName = "Brothers.jpg",
+                            Titulo = "Brother"
+                        },
+                        new
+                        {
+                            PeliculaId = 3,
+                            ImageMimeType = "image/jpeg",
+                            ImageName = "AmericanPsycho.jpg",
+                            Titulo = "American Psycho"
+                        },
+                        new
+                        {
+                            PeliculaId = 4,
+                            ImageMimeType = "image/jpeg",
+                            ImageName = "shreck.jpg",
+                            Titulo = "Shreck"
+                        });
                 });
 
             modelBuilder.Entity("PNT1_ProyectoFinal_Cine.Models.Ticket", b =>

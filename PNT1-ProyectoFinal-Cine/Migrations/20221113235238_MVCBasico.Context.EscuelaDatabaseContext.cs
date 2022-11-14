@@ -2,7 +2,7 @@
 
 namespace PNT1_ProyectoFinal_Cine.Migrations
 {
-    public partial class enumEnSala : Migration
+    public partial class MVCBasicoContextEscuelaDatabaseContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

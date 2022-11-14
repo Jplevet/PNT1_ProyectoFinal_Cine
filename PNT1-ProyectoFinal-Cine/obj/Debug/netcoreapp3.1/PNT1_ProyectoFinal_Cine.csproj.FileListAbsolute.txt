@@ -1133,7 +1133,6 @@ C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\PNT1_ProyectoFinal_Cine.TagHelpers.output.cache
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\PNT1_ProyectoFinal_Cine.RazorCoreGenerate.cache
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Pelicula\Create.cshtml.g.cs
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Pelicula\Delete.cshtml.g.cs
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Pelicula\Details.cshtml.g.cs
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Pelicula\Edit.cshtml.g.cs
@@ -1158,3 +1157,4 @@ C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\PNT1_ProyectoFinal_Cine.Views.pdb
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\PNT1_ProyectoFinal_Cine.csproj.CopyComplete
 C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\PNT1_ProyectoFinal_Cine.genruntimeconfig.cache
+C:\Users\JAURE\Documents\GitHub\PNT1_ProyectoFinal_Cine\PNT1-ProyectoFinal-Cine\obj\Debug\netcoreapp3.1\Razor\Views\Pelicula\Create.cshtml.g.cs

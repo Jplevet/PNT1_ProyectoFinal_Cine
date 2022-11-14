@@ -7,6 +7,7 @@ using PNT1_ProyectoFinal_Cine.Context;
 using PNT1_ProyectoFinal_Cine.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace PNT1_ProyectoFinal_Cine.Controllers
@@ -17,7 +18,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         private IWebHostEnvironment _environment;
         //private readonly CineDatabaseContext _context;
 
-        public PeliculaController(CineDatabaseContext context, IPeliculaRepository repository, IWebHostEnvironment environment)
+        public PeliculaController(IPeliculaRepository repository, IWebHostEnvironment environment)
         {
             _repository = repository;
             _environment = environment;
@@ -41,7 +42,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
 
             return View(pelicula);
         }
-
+        [HttpGet]
         // GET: Pelicula/Create
         public IActionResult Create()
         {
@@ -64,6 +65,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         //    }
         //    return View(pelicula);
         //}
+        [HttpPost, ActionName("Create")]
         public IActionResult CreatePost(Pelicula peliculas)
         {
             if (ModelState.IsValid)
@@ -90,6 +92,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         //    }
         //    return View(pelicula);
         //}
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             Pelicula pelicula = _repository.GetPeliculaById(id);
@@ -134,6 +137,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         //    }
         //    return View(pelicula);
         //}
+        [HttpPost, ActionName("Edit")]
         public async Task<IActionResult> EditPost(int id)
         {
             var peliculaToUpdate = _repository.GetPeliculaById(id);
@@ -141,7 +145,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                                 peliculaToUpdate,
                                 "",
                                 c => c.PeliculaId,
-                                c => c.titulo,
+                                c => c.Titulo,
                                 c => c.ImageName,
                                 c => c.PhotoAvaImg,
                                 c => c.PhotoPelicula);
@@ -155,6 +159,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         }
 
         // GET: Pelicula/Delete/5
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             var pelicula = _repository.GetPeliculaById(id);
@@ -166,8 +171,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         }
         private void PopulatePeliculasDropDownList(int? selectedPelicula = null)
         {
-            var bakeries = _repository.PopulatePeliculasDropDownList();
-            ViewBag.BakeryID = new SelectList(bakeries.AsNoTracking(), "BakeryId", "BakeryName", selectedPelicula);
+            var peliculas = _repository.PopulatePeliculasDropDownList();
+            ViewBag.PeliculaId = new SelectList(peliculas.AsNoTracking(), "PeliculaId", "ImageName", selectedPelicula);
         }
 
         // POST: Pelicula/Delete/5
@@ -219,6 +224,10 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             {
                 return NotFound();
             }
+        }
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
 

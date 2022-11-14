@@ -1,4 +1,4 @@
-﻿using PNT1_ProyectoFinal_Cine.Data;
+﻿using PNT1_ProyectoFinal_Cine.Context;
 using PNT1_ProyectoFinal_Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,28 +9,28 @@ namespace PNT1_ProyectoFinal_Cine.Properties
 {
     public class PeliculaRepository : IPeliculaRepository
     {
-        private PeliculaContext _context;
+        private CineDatabaseContext _context;
 
-        public PeliculaRepository(PeliculaContext context)
+        public PeliculaRepository(CineDatabaseContext context)
         {
             _context = context;
         }
         public IEnumerable<Pelicula> GetPeliculas()
         {
-            return _context.peliculas.ToList();
+            return _context.Peliculas.ToList();
         }
 
 
         public Pelicula GetPeliculaById(int id)
         {
-            return _context.peliculas.Include(b => b.pelicula)
+            return _context.Peliculas.Include(b => b.Titulo)
                 .SingleOrDefault(c => c.PeliculaId == id);
         }
 
 
         public void CreatePelicula(Pelicula pelicula)
         {
-            if (pelicula.titulo != null && pelicula.titulo.Length > 0)
+            if (pelicula.Titulo != null && pelicula.Titulo.Length > 0)
             {
                 pelicula.ImageMimeType = pelicula.PhotoAvaImg.ContentType;
                 pelicula.ImageName = Path.GetFileName(pelicula.PhotoAvaImg.FileName);
@@ -46,8 +46,8 @@ namespace PNT1_ProyectoFinal_Cine.Properties
 
         public void DeletePelicula(int id)
         {
-            var cupcake = _context.peliculas.SingleOrDefault(c => c.PeliculaId == id);
-            _context.peliculas.Remove(cupcake);
+            var cupcake = _context.Peliculas.SingleOrDefault(c => c.PeliculaId == id);
+            _context.Peliculas.Remove(cupcake);
             _context.SaveChanges();
         }
 
@@ -58,8 +58,8 @@ namespace PNT1_ProyectoFinal_Cine.Properties
 
         public IQueryable<Pelicula> PopulatePeliculasDropDownList()
         {
-            var bakeriesQuery = from b in _context.peliculas
-                                orderby b.titulo
+            var bakeriesQuery = from b in _context.Peliculas
+                                orderby b.Titulo
                                 select b;
             return bakeriesQuery;
         }

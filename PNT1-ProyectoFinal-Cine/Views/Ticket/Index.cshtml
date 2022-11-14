@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<PNT1_ProyectoFinal_Cine.Models.Ticket>
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -40,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pelicula.titulo)
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.usuario.Contrasenia)

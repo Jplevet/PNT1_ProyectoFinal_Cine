@@ -25,7 +25,7 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
 
         public Pelicula GetPeliculaById(int id)
         {
-            return _context.Peliculas.Include(b => b.pelicula)
+            return _context.Peliculas.Include(b => b.PeliculaId)
                 .SingleOrDefault(c => c.PeliculaId == id);
         }
 
@@ -94,7 +94,7 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
         public IQueryable<Pelicula> PopulatePeliculasDropDownList()
         {
             var peliculasQuery = from b in _context.Peliculas
-                                orderby b.titulo
+                                orderby b.Titulo
                                 select b;
             return peliculasQuery;
         }
