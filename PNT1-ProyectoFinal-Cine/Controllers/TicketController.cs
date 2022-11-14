@@ -22,7 +22,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // GET: Ticket
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tickets.ToListAsync());
+            var cineDatabaseContext = _context.Tickets.Include(t => t.Pelicula).Include(t => t.usuario);
+            return View(await cineDatabaseContext.ToListAsync());
         }
 
         // GET: Ticket/Details/5
@@ -34,6 +35,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var ticket = await _context.Tickets
+                .Include(t => t.Pelicula)
+                .Include(t => t.usuario)
                 .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
@@ -46,6 +49,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // GET: Ticket/Create
         public IActionResult Create()
         {
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "PeliculaId", "titulo");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Contrasenia");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,asiento,fecha")] Ticket ticket)
+        public async Task<IActionResult> Create([Bind("TicketId,asiento,fecha,PeliculaId,UsuarioId,sala")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "PeliculaId", "titulo", ticket.PeliculaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Contrasenia", ticket.UsuarioId);
             return View(ticket);
         }
 
@@ -78,6 +85,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             {
                 return NotFound();
             }
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "PeliculaId", "titulo", ticket.PeliculaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Contrasenia", ticket.UsuarioId);
             return View(ticket);
         }
 
@@ -86,7 +95,7 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,asiento,fecha")] Ticket ticket)
+        public async Task<IActionResult> Edit(int id, [Bind("TicketId,asiento,fecha,PeliculaId,UsuarioId,sala")] Ticket ticket)
         {
             if (id != ticket.TicketId)
             {
@@ -113,6 +122,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "PeliculaId", "titulo", ticket.PeliculaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Contrasenia", ticket.UsuarioId);
             return View(ticket);
         }
 
@@ -125,6 +136,8 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             }
 
             var ticket = await _context.Tickets
+                .Include(t => t.Pelicula)
+                .Include(t => t.usuario)
                 .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
@@ -145,16 +158,16 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private void PopulatePeliculasDropDownList()
-        {
-            var pelis = _context.Peliculas; 
-            ViewBag.PeliculaID = new SelectList(pelis.AsNoTracking(), "PeliculaId", "titulo");
-        }
-
-
         private bool TicketExists(int id)
         {
             return _context.Tickets.Any(e => e.TicketId == id);
         }
+
+        private void PopulatePeliculasDropDownList()
+        {
+            var pelis = _context.Peliculas;
+            ViewBag.PeliculaID = new SelectList(pelis.AsNoTracking(), "PeliculaId", "titulo");
+        }
+
     }
 }

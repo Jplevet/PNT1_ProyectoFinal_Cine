@@ -1,286 +1,87 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <title>Cine</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - principal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/cupcakes-styles.css" />
 </head>
-
 <body>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo">Cine</h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <a class="menu-list-item active" asp-area="" asp-controller="Ticket" asp-action="Index">Reserva</a>
-                    <a class="menu-list-item active" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
-                    <a class="menu-list-item active" asp-area="" asp-controller="Pelicula" asp-action="Index">Películas</a>
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="img/hasbu.jpeg" alt="">
-                <div class="profile-text-container">
-                    <span class="profile-text">Perfil</span>
-                    <i class="fas fa-caret-down"></i>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Página principal</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Ticket" asp-action="Index">Reserva</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pelicula" asp-action="Index">Películas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Faq">Preguntas Frecuentes</a>
+                        </li>*@
+                    </ul>
                 </div>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
             </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="main-title">
+            <p class="into">Bienvenidos al cine</p>
+            <button type="button" onclick="location.href='@Url.Action("Create", "Pelicula")'">Crear reservacion</button>
+        </div>
+        <div class="img-container">
+            @foreach (var item in Model)
+            {
+                <div class="photo-index-card">
+                    <h3 class="display-picture-title">
+                        "@Html.DisplayFor(modelItem => item.PeliculaId)"
+                    </h3>
+                    @if (item.ImageName != null)
+                    {
+                        <div class="photo-display">
+                            <img class="photo-display-img" src="@Url.Action("GetImage", "Pelicula", new { Id = item.CupcakeId })" />
+                        </div>
+                    }
+                    <div>
+                        <p class="display-label">
+                            @Html.DisplayNameFor(model => item.Titulo)
+                        </p>
+                        <br />
+                        <p class="display-field">
+                            @Html.DisplayFor(model => item.Titulo)
+                        </p>
+                    </div>
+                </div>
+            }
         </div>
     </div>
     <div class="container">
-        <div class="content-container">
-            <div class="featured-content"
-                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/drive.jpg');">
-                <img class="featured-title" src="img/driveLetra.png" alt="">
-                <p class="featured-desc">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-                    minima voluptatibus incidunt. Accusamus, provident.
-                </p>
-                <button class="featured-button">Reservar</button>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">ESTRENOS</h1>
-                <div class="movie-list">
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/OnePiece.jpeg" alt="">
-                        <span class="movie-list-item-title">One Piece Red</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/drive.jpg" alt="">
-                        <span class="movie-list-item-title">Drive</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/clubPelea.jpeg" alt="">
-                        <span class="movie-list-item-title">Club de la pelea</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/americanPsycho.jpg" alt="">
-                        <span class="movie-list-item-title">American Psycho</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/brothers.jpeg" alt="">
-                        <span class="movie-list-item-title">Brothers</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/bladeRunner.jpg" alt="">
-                        <span class="movie-list-item-title">Blade Runner 2049</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/shreck.jpeg" alt="">
-                        <span class="movie-list-item-title">Shreck</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-        </div>
-        <div class="movie-list-container">
-            <h1 class="movie-list-title">
-                CARTELERA COMPLETA
-            </h1>
-            <div class="movie-list-wrapper">
-                <div class="movie-list">
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/bladeRunner.jpg" alt="">
-                        <span class="movie-list-item-title">Blade Runner 2049</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/drive.jpg" alt="">
-                        <span class="movie-list-item-title">Drive</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/clubPelea.jpeg" alt="">
-                        <span class="movie-list-item-title">Club de la pelea</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/brothers.jpeg" alt="">
-                        <span class="movie-list-item-title">Brothers</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/americanPsycho.jpg" alt="">
-                        <span class="movie-list-item-title">American Psycho</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/brothers.jpeg" alt="">
-                        <span class="movie-list-item-title">Brothers</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/shreck.jpeg" alt="">
-                        <span class="movie-list-item-title">Shreck</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </div>
-        </div>
-        <div class="movie-list-container">
-            <h1 class="movie-list-title">
-                PROXIMOS ESTRENOS
-            </h1>
-            <div class="movie-list-wrapper">
-                <div class="movie-list">
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/drive.jpg" alt="">
-                        <span class="movie-list-item-title">Drive</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/bladeRunner.jpg" alt="">
-                        <span class="movie-list-item-title">Blade Runner 2049</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/brothers.jpeg" alt="">
-                        <span class="movie-list-item-title">Brothers</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/clubPelea.jpeg" alt="">
-                        <span class="movie-list-item-title">Club de la pelea</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/OnePiece.jpeg" alt="">
-                        <span class="movie-list-item-title">One Piece Red</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/shreck.jpeg" alt="">
-                        <span class="movie-list-item-title">Shreck</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                    <div class="movie-list-item">
-                        <img class="movie-list-item-img" src="img/americanPsycho.jpg" alt="">
-                        <span class="movie-list-item-title">American Psycho</span>
-                        <p class="movie-list-item-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                            hic fugit similique accusantium.
-                        </p>
-                        <button class="movie-list-item-button">Reservar</button>
-                    </div>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-                <main role="main" class="pb-3">
-                    @RenderBody()
-                </main>
-            </div>
-        </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-    <footer class="border-top footer text-muted footer-style">
-        <div>
-            &copy; 2022 - PNT1_ProyectoFinal_Cine - <a asp-area="" asp-controller="Home"
-                                                       asp-action="Privacy">Privacy</a>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - pruebaRecital - <a asp-area="" asp-controller="Home" asp-action="Faq">Preguntas Frecuentes</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/app.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
-
 </html>

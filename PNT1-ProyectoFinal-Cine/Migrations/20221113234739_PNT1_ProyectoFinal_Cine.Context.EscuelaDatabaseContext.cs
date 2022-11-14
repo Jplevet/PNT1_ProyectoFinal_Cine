@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PNT1_ProyectoFinal_Cine.Migrations
 {
-    public partial class inicial : Migration
+    public partial class PNT1_ProyectoFinal_CineContextEscuelaDatabaseContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,10 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                 {
                     PeliculaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    titulo = table.Column<string>(nullable: false)
+                    Titulo = table.Column<string>(nullable: false),
+                    ImageMimeType = table.Column<string>(nullable: true),
+                    PhotoPelicula = table.Column<byte[]>(nullable: true),
+                    ImageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,6 +66,17 @@ namespace PNT1_ProyectoFinal_Cine.Migrations
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Peliculas",
+                columns: new[] { "PeliculaId", "ImageMimeType", "ImageName", "PhotoPelicula", "Titulo" },
+                values: new object[,]
+                {
+                    { 1, "image/jpeg", "Drive.jpg", null, "Drive" },
+                    { 2, "image/jpeg", "Brothers.jpg", null, "Brother" },
+                    { 3, "image/jpeg", "AmericanPsycho.jpg", null, "American Psycho" },
+                    { 4, "image/jpeg", "shreck.jpg", null, "Shreck" }
                 });
 
             migrationBuilder.CreateIndex(
