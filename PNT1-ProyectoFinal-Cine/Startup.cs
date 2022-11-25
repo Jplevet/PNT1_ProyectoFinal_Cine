@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using PNT1_ProyectoFinal_Cine.Context;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Hosting;
+using PNT1_ProyectoFinal_Cine.Repositories;
 
 namespace PNT1_ProyectoFinal_Cine
 {
@@ -34,6 +35,7 @@ namespace PNT1_ProyectoFinal_Cine
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddTransient<IPeliculaRepository, PeliculaRepository>();
             services.AddDbContext<CineDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionString:CineDBConnection"]));
             services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
             .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

@@ -13,10 +13,12 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
     public class TicketController : Controller
     {
         private readonly CineDatabaseContext _context;
+        //private readonly CineDatabaseContext context2;
 
         public TicketController(CineDatabaseContext context)
         {
             _context = context;
+            //context2 = context2;
         }
 
         // GET: Ticket
@@ -167,6 +169,51 @@ namespace PNT1_ProyectoFinal_Cine.Controllers
         {
             var pelis = _context.Peliculas;
             ViewBag.PeliculaID = new SelectList(pelis.AsNoTracking(), "PeliculaId", "titulo");
+        }
+
+
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    var tickets = from m in context2.Tickets
+        //                 select m;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        tickets = tickets.Where(s => s.usuario.NombreUsuario!.Contains(searchString));
+        //    }
+
+        //    return View(await tickets.ToListAsync());
+        //}
+
+        //public ActionResult ReservasDeHoy()
+        //{
+        //    List<Ticket> reservas = (from t in context2.Tickets
+        //                          where t.fecha == DateTime.Today
+        //                          select t).ToList();
+        //    return View("Index", reservas);
+        //}
+
+
+
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    var tickets = from m in _context.Tickets
+        //                  select m;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        tickets = tickets.Where(s => s.usuario.NombreUsuario!.Contains(searchString));
+        //    }
+
+        //    return View(await tickets.ToListAsync());
+        //}
+
+        public ActionResult ReservasDeHoy()
+        {
+            List<Ticket> reservas = (from t in _context.Tickets
+                                     where t.fecha == DateTime.Today
+                                     select t).ToList();
+            return View("Index", reservas);
         }
 
     }

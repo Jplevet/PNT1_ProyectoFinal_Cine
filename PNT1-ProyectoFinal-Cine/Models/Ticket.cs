@@ -18,6 +18,9 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [Required(ErrorMessage = "Ingresar asiento válido")]
         public int asiento { get; set; }
 
+
+        [Display(Name = "Fecha")]
+        [Column(TypeName = "date")]
         public DateTime fecha { get; set; }
 
 
@@ -38,7 +41,7 @@ namespace PNT1_ProyectoFinal_Cine.Models
         [EnumDataType(typeof(Sala))]
         public Sala sala { get; set; }
 
-
+        //public virtual ICollection<Pelicula> Peliculas { get; set; }
 
     }
 }

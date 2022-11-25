@@ -9,6 +9,11 @@
 <p>
     <a asp-action="Create">Reservar</a>
 </p>
+<p>
+    @Html.ActionLink("Ver solo reservas de hoy", "ReservasDeHoy", "Ticket")
+</p>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -31,7 +36,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.asiento)
@@ -57,3 +62,6 @@
 }
     </tbody>
 </table>
+
+
+                

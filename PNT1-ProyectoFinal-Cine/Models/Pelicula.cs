@@ -12,12 +12,12 @@ namespace PNT1_ProyectoFinal_Cine.Models
         public int PeliculaId { get; set; }
 
 
-        [Required(ErrorMessage = "Seleccionar Película correcta")]
+        [Required(ErrorMessage = "Seleccionar Película")]
         public string titulo { get; set; }
 
 
         [NotMapped]
-        [Display(Name = "Cupcake Picture:")]
+        [Display(Name = "Foto:")]
         public IFormFile PhotoAvatar { get; set; }
 
         public string ImageName { get; set; }

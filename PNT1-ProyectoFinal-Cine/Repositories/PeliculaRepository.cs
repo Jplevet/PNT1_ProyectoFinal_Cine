@@ -23,9 +23,9 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
         }
 
 
-        public Ticket GetPeliculaById(int id)
+        public Pelicula GetPeliculaById(int id)
         {
-            return _context.Tickets.Include(b => b.Pelicula)
+            return _context.Peliculas.Include(b => b.PeliculaId)
                 .SingleOrDefault(c => c.PeliculaId == id);
         }
 

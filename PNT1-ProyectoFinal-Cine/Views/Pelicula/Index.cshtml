@@ -4,11 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Películas</h1>
+@*<h1>Películas</h1>
 
 <p>
     <a asp-action="Create">Crear película</a>
 </p>
+
+    <div class="container">
+        <div class="main-title">
+            <button type="button" onclick="location.href='@Url.Action("Create", "Pelicula")'">Crear película</button>
+    </div>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+                @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.titulo)
@@ -32,4 +38,90 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+     @* <div class="container">
+        <div class="main-title">
+            <p class="into">Bienvenidos al cine</p>
+            <button type="button" onclick="location.href='@Url.Action("Create", "Pelicula")'">Crear reservacion</button>
+        </div>*@
+        @*<div class="img-container">
+            @foreach (var item in Model)
+            {
+                <div class="photo-index-card">
+                    <h3 class="display-picture-title">
+                        "@Html.DisplayFor(modelItem => item.PeliculaId)"
+                    </h3>
+                    @if (item.ImageName != null)
+                    {
+                        <div class="photo-display">
+                            <img class="photo-display-img" src="@Url.Action("GetImage", "Pelicula", new { Id = item.CupcakeId })" />
+                        </div>
+                    }
+                    <div>
+                        <p class="display-label">
+                            @Html.DisplayNameFor(model => item.Titulo)
+                        </p>
+                        <br />
+                        <p class="display-field">
+                            @Html.DisplayFor(model => item.Titulo)
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>*@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link type="text/css" rel="stylesheet" href="~/css/cupcakes-styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="main-title">
+            <h1>Películas</h1>
+            <button type="button" onclick="location.href='@Url.Action("Create", "Cupcake")'">Add Cupcake</button>
+        </div>
+    <div class="container">
+        <div class="main-title">
+            <p class="into">Bienvenidos al cine</p>
+            <button type="button" onclick="location.href='@Url.Action("Create", "Pelicula")'">Crear reservacion</button>
+        </div>
+        <div class="img-container">
+            @foreach (var item in Model)
+            {
+                <div class="photo-index-card">
+                    <h3 class="display-picture-title">
+                        "@Html.DisplayFor(modelItem => item.PeliculaId)"
+                    </h3>
+                    @if (item.ImageName != null)
+                    {
+                        <div class="photo-display">
+                            <img class="photo-display-img" src="@Url.Action("GetImage", "Pelicula", new { Id = item.PeliculaId })" />
+                        </div>
+                    }
+                    <div>
+                        <p class="display-label">
+                            @Html.DisplayNameFor(model => item.titulo)
+                        </p>
+                        <br />
+                        <p class="display-field">
+                            @Html.DisplayFor(model => item.titulo)
+                        </p>
+                    </div>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@item.PeliculaId">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.PeliculaId">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PeliculaId">Eliminar</a>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+        </div>
+</body>
+</html>

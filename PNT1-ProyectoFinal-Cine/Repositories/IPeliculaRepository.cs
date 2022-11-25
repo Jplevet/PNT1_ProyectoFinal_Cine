@@ -9,8 +9,8 @@ namespace PNT1_ProyectoFinal_Cine.Repositories
     public interface IPeliculaRepository
     {
         IEnumerable<Pelicula> GetPeliculas();
-        Ticket GetPeliculaById(int id);
-        void CreatePelicula(Pelicula cupcake);
+        Pelicula GetPeliculaById(int id);
+        void CreatePelicula(Pelicula pelicula);
         void DeletePelicula(int id);
         void SaveChanges();
         IQueryable<Pelicula> PopulatePeliculasDropDownList();
